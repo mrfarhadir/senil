@@ -3,7 +3,7 @@ const { prod_Path, src_Path } = require("./path");
 
 module.exports = {
   entry: {
-    main: "./" + src_Path + "/index.ts"
+    'senil.webpack': "./" + src_Path + "/index.ts"
   },
   resolve: {
     extensions: [".ts", ".js"]
