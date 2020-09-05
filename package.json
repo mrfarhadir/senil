@@ -3,6 +3,8 @@
   "version": "1.0.0",
   "description": "state for pure HTML",
   "main": "index.ts",
+  "repository": "https://github.com/mrfarhadir/senil",
+  "homepage": "https://senil.js.org",
   "scripts": {
     "start": "npm run dev",
     "dev": "webpack-dev-server --env dev --mode none",
