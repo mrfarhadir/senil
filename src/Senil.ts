@@ -1,7 +1,6 @@
 import {senilConfig} from "./types";
 import {IStore, Store} from "./classes/Store";
 import {LocalStore} from "./classes/LocalStore";
-import {log} from "util";
 
 export default class Senil {
 
@@ -10,10 +9,13 @@ export default class Senil {
     private config: senilConfig;
     private inputElements: Array<string> = ['INPUT', 'TEXTAREA'];
     private storages: Array<IStore> = [] as Array<IStore>;
-
+    private updateEvent: Event
+    public listener: any;
     constructor(state: Object, config?: senilConfig) {
         this.state = state;
         this.setDefaultConfig(config);
+        this.updateEvent = new Event('DomUpdated')
+        this.listener = window.addEventListener
         this.init()
     }
 
@@ -174,6 +176,7 @@ export default class Senil {
                 }
             }
         });
+        window.dispatchEvent(this.updateEvent)
     };
 
     public $push(...items: any[]) {
