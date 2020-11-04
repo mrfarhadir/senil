@@ -1,6 +1,6 @@
 {
   "name": "senil",
-  "version": "1.0.2",
+  "version": "1.0.21",
   "description": "state for pure HTML",
   "main": "index.ts",
   "repository": "https://github.com/mrfarhadir/senil",
@@ -13,7 +13,7 @@
   "author": "Farhad Mehryari <info@mrfarhad.ir>",
   "license": "MIT",
   "devDependencies": {
-    "autoprefixer": "^8.6.0",
+    "autoprefixer": "^8.6.0",git
     "awesome-typescript-loader": "^5.2.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
