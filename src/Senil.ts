@@ -67,7 +67,7 @@ export default class Senil {
                 // @ts-ignore
                 element.value = _value;
                 // query all elements including model attribute and listen for their changes
-                element.addEventListener('keypress', (evt) => {
+                element.addEventListener('keyup', (evt) => {
                     // @ts-ignore
                     let newValue = evt.target.value;
                     if (Number(newValue)) {
