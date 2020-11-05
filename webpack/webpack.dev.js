@@ -1,8 +1,5 @@
 const path = require('path');
-const {
-  prod_Path,
-  src_Path
-} = require('./path');
+const {  prod_Path,  src_Path} = require('./path');
 
 module.exports = {
   entry: {

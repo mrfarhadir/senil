@@ -9,10 +9,12 @@ export default class Senil {
     private config: senilConfig;
     private inputElements: Array<string> = ['INPUT', 'TEXTAREA'];
     private storages: Array<IStore> = [] as Array<IStore>;
-    private updateEvent: Event
+    private updateEvent: Event;
+    private filterUpdateDom: Function = null
     public listener: any;
-    constructor(state: Object, config?: senilConfig) {
+    constructor(state: Object, config?: senilConfig, filterUpdateDom: Function = null) {
         this.state = state;
+        this.filterUpdateDom = filterUpdateDom
         this.setDefaultConfig(config);
         this.updateEvent = new Event('DomUpdated')
         this.listener = window.addEventListener
@@ -27,7 +29,6 @@ export default class Senil {
             localStorage: false
         };
         this.config = config;
-        console.log(config)
     };
 
     private init = () => {
@@ -48,7 +49,6 @@ export default class Senil {
             let preState = storage.load();
             if (preState)
                 this.state = preState
-            console.log(this.state)
         })
     };
 
@@ -61,12 +61,12 @@ export default class Senil {
         elements.forEach((element, index) => {
             let stateKey = element.getAttribute('model');
             // @ts-ignore
-            const _value = this.getValue(stateKey);
+            let _value = this.getValue(stateKey);
             if (this.inputElements.find(name => name === elements[index].nodeName)) {
                 // @ts-ignore
                 element.value = _value;
                 // query all elements including model attribute and listen for their changes
-                element.addEventListener('keyup', (evt) => {
+                element.addEventListener('keypress', (evt) => {
                     // @ts-ignore
                     let newValue = evt.target.value;
                     if (Number(newValue)) {
@@ -77,7 +77,12 @@ export default class Senil {
                     })
                 })
             } else {
-                element.innerHTML = _value
+                if (this.filterUpdateDom) {
+                    element.innerHTML = this.filterUpdateDom(_value)
+                }
+                else {
+                    element.innerHTML = _value
+                }
             }
 
             // check if element has content editable attribute
@@ -172,7 +177,12 @@ export default class Senil {
                     // @ts-ignore
                     element.value = value
                 } else {
-                    element.innerHTML = value
+                    if (this.filterUpdateDom) {
+                        element.innerHTML = this.filterUpdateDom(value)
+                    }
+                    else {
+                        element.innerHTML = value
+                    }
                 }
             }
         });
