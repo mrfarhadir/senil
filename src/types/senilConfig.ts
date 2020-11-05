@@ -3,5 +3,6 @@ export type senilConfig = {
     storageKey?: string,
     storages?: {
         localStorage: boolean
-    }
+    },
+    enableDomUpdateEmitter: boolean
 }

@@ -24,6 +24,7 @@ export default class Senil {
     private setDefaultConfig = (config: senilConfig) => {
         if (!config) config = {} as senilConfig;
         if (!config.wrapper) config.wrapper = 'body';
+        if (!config.enableDomUpdateEmitter) config.enableDomUpdateEmitter = false;
         if (!config.storageKey) config.storageKey= 'senil';
         if (!config.storages) config.storages = {
             localStorage: false
@@ -186,7 +187,9 @@ export default class Senil {
                 }
             }
         });
-        window.dispatchEvent(this.updateEvent)
+        if (this.config.enableDomUpdateEmitter) {
+            window.dispatchEvent(this.updateEvent)
+        }
     };
 
     public $push(...items: any[]) {
