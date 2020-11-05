@@ -1,6 +1,6 @@
 {
   "name": "senil",
-  "version": "1.0.21",
+  "version": "1.0.31",
   "description": "state for pure HTML",
   "main": "index.ts",
   "repository": "https://github.com/mrfarhadir/senil",
