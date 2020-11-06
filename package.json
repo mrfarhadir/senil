@@ -13,7 +13,7 @@
   "author": "Farhad Mehryari <info@mrfarhad.ir>",
   "license": "MIT",
   "devDependencies": {
-    "autoprefixer": "^8.6.0",
+    "autoprefixer": "^9.8.6",
     "awesome-typescript-loader": "^5.2.0",
     "babel-core": "^6.26.3",
     "babel-loader": "^7.1.4",
